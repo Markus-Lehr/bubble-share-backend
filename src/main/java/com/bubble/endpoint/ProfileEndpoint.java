@@ -1,9 +1,9 @@
 package com.bubble.endpoint;
 
 
+import com.bubble.dto.ProfileDTO;
 import com.bubble.entity.Profile;
 
-import javax.annotation.security.PermitAll;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -17,8 +17,7 @@ import javax.ws.rs.core.SecurityContext;
 @RequestScoped
 public class ProfileEndpoint {
     @GET
-    @PermitAll
-    public Profile getOwnProfile(@Context SecurityContext ctx) {
-        return (Profile) ctx.getUserPrincipal();
+    public ProfileDTO getOwnProfile(@Context SecurityContext ctx) {
+        return ProfileDTO.from((Profile) ctx.getUserPrincipal());
     }
 }
