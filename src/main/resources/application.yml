@@ -10,3 +10,6 @@ quarkus:
 
 quarkus.datasource:
   db-kind: "h2"
+
+bubbleshare:
+  serviceKeyLocation: "bubble-share-firebase-adminsdk-wee7c-caf1cd974b.json"
