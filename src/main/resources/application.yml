@@ -1,13 +1,13 @@
-greeting:
-  message: "hello"
-
 mp.jwt.verify:
   issuer: "https://securetoken.google.com/bubble-share"
   verify.publickey.location: "META-INF/resources/key.pem"
 quarkus:
   smallrye-jwt:
     enabled: "true"
-
+  hibernate-orm:
+    database:
+      generation: "drop-and-create"
+    sql-load-script: ["import.sql"]
 quarkus.datasource:
   db-kind: "h2"
 
