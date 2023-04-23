@@ -11,7 +11,7 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@master
       - name: Build native executable and upload it as an artifact
-        uses: maxday/quarkus-native-build-docker-action@1
+        uses: maxday/quarkus-native-build-docker-action@13bf5c4ae6942143cf43a5663a6c7f847ac3163c
         with:
           outputName: bubble-share-runner
           dockerfilePath: src/main/docker/Dockerfile.native-micro
