@@ -27,16 +27,17 @@ public class BubbleEndpoint {
     @Transactional
     public SimpleBubbleDTO createNewBubble(@Context SecurityContext ctx, @RequestBody BubbleCreationDTO bubbleCreationDTO) {
         Profile profile = (Profile) ctx.getUserPrincipal();
+        profile = Profile.findById(profile.uid);
         Bubble bubble = new Bubble();
         bubble.name = bubbleCreationDTO.getName();
         bubble.shareables = Collections.emptyList();
-        bubble.members = List.of(profile);
-        bubble.persistAndFlush();
+        bubble.persist();
 
         if (profile.bubbles == null) {
             profile.bubbles = new ArrayList<>();
         }
         profile.bubbles.add(bubble);
+        profile.persistAndFlush();
 
         return SimpleBubbleDTO.from(bubble);
     }

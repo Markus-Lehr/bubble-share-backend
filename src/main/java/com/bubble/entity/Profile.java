@@ -15,7 +15,7 @@ public class Profile extends PanacheEntityBase implements Principal {
     public String picture;
     @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public List<Shareable> shareables;
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(fetch = FetchType.EAGER)
     public List<Bubble> bubbles;
 
     @Override

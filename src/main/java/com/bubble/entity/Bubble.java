@@ -11,8 +11,8 @@ import java.util.List;
 @Entity
 public class Bubble extends PanacheEntity {
     public String name;
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(fetch = FetchType.LAZY)
     public List<Shareable> shareables;
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "bubbles", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "bubbles")
     public List<Profile> members;
 }

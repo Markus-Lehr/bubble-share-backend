@@ -1,15 +1,33 @@
-mp.jwt.verify:
-  issuer: "https://securetoken.google.com/bubble-share"
-  verify.publickey.location: "META-INF/resources/key.pem"
+#mp.jwt.verify:
+#  issuer: "https://securetoken.google.com/bubble-share"
+#  verify.publickey.location: "META-INF/resources/key.pem"
 quarkus:
+  datasource:
+    password: ${DB_PASSWORD}
+    jdbc:
+      max-size: '16'
+      url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+    username: ${DB_USER}
+    db-kind: postgresql
+    devservices:
+      image-name: postgres:15.2-alpine
+  http:
+    proxy:
+      allow-forwarded: 'true'
+      proxy-address-forwarding: 'true'
+    ssl-port: '443'
+    ssl:
+      certificate:
+        key-store-password: password
+        key-store-file-type: jks
+        key-store-file: ./keystore.jks
+      native: 'true'
+    insecure-requests: disabled
   smallrye-jwt:
-    enabled: "true"
+    enabled: 'true'
   hibernate-orm:
+    sql-load-script: import.sql
     database:
-      generation: "drop-and-create"
-    sql-load-script: ["import.sql"]
-quarkus.datasource:
-  db-kind: "h2"
-
+      generation: update
 bubbleshare:
-  serviceKeyLocation: "bubble-share-firebase-adminsdk-wee7c-caf1cd974b.json"
+  serviceKeyLocation: ./bubble-share-firebase-adminsdk-wee7c-caf1cd974b.json

@@ -12,6 +12,6 @@ public class Shareable extends PanacheEntity {
     public Category category;
     @ManyToOne(fetch = FetchType.EAGER)
     public Profile owner;
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "shareables", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "shareables")
     public List<Bubble> bubbles;
 }

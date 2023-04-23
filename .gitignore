@@ -42,3 +42,7 @@ nb-configuration.xml
 # Plugin directory
 /.quarkus/cli/plugins/
 /src/main/resources/bubble-share-firebase*
+/bubble-share.com.pem
+/bubble-share.com.pem.private.key
+/keystore.jks
+/bubble-share-firebase-adminsdk-wee7c-caf1cd974b.json

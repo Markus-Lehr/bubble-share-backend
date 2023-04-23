@@ -9,8 +9,7 @@ import org.jboss.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 @ApplicationScoped
 public class FirebaseConfig {
@@ -29,14 +28,15 @@ public class FirebaseConfig {
     }
 
     private FirebaseOptions getFirebaseOptions() {
-        InputStream serviceKey = getClass().getClassLoader().getResourceAsStream(properties.serviceKeyLocation());
+        FileInputStream fileInputStream;
         GoogleCredentials googleCredentials;
         try {
-            googleCredentials = GoogleCredentials.fromStream(serviceKey);
+            fileInputStream = new FileInputStream(properties.serviceKeyLocation());
+            googleCredentials = GoogleCredentials.fromStream(fileInputStream);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return new FirebaseOptions.Builder()
+        return FirebaseOptions.builder()
                 .setCredentials(googleCredentials)
                 .build();
     }

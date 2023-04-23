@@ -9,6 +9,7 @@ If you want to learn more about Quarkus, please visit its website: https://quark
 You can run your application in dev mode that enables live coding using:
 ```shell script
 ./mvnw compile quarkus:dev
+./mvnw compile quarkus:dev -Dquarkus.http.ssl.certificate.key-store-file=$BUBBLE_KEYSTORE_LOCATION
 ```
 
 > **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
