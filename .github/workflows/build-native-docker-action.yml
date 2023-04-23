@@ -2,7 +2,7 @@ name: build-native-docker-and-deploy
 on:
   push:
     branches:
-      - main
+      - master
 jobs:
   native_build:
     runs-on: ubuntu-latest
