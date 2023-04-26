@@ -16,6 +16,7 @@ jobs:
           version: 'latest'
           java-version: '17'
           components: 'native-image'
+          cache: 'maven'
       - name: Debug Info
         run: |
           echo "GRAALVM_HOME: $GRAALVM_HOME"
@@ -40,7 +41,7 @@ jobs:
       - name: Build docker image
         run: docker build . --tag markus/bubbleshare:latest
       - name: Push docker image
-        run: docker push ghcr.io/markus/bubbleshare:latest
+        run: docker push markus/bubbleshare:latest
 
 #      - name: Build and push docker image
 #        uses: docker/build-push-action@v4
