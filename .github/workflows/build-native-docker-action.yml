@@ -38,7 +38,7 @@ jobs:
       - name: Build Application
         run: ./mvnw clean package -Pnative
       - name: Build docker image
-        run: docker build --tag markus/bubbleshare:latest
+        run: docker build . --tag markus/bubbleshare:latest
       - name: Push docker image
         run: docker push ghcr.io/markus/bubbleshare:latest
 
